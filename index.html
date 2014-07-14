@@ -109,7 +109,7 @@ $ python
                     </section>
                     <section>
                     <p>C syntax:</p>
-                    <pre><code data-trim contenteditable>
+                    <pre><code class="Cpp" data-trim contenteditable>
 for (i=0; i < mylist_length; i++) {
    do_something(mylist[i]);
 }
@@ -182,6 +182,29 @@ for element in mylist:
                             <li><a href="http://www.ironpython.net" target="_blank">IronPython</a>: .NET framework</li>
                             <li><a href="http://www.stackless.com" target="_blank">StacklessPython</a></li>
                         </ul>
+                    </section>
+                    <section>
+                        <h2>Installing modules</h2>
+                        <p>If it's your lucky day:</p>
+                        <pre><code class="bash" data-trim contenteditable>
+sudo apt-get install python-numpy
+</code></pre>
+                        <br><br>
+                        <p>*Note this is a system-wide installation. Bad idea? Maybe.</p>
+                    </section>
+
+                    <section>
+                        <h2>Python Distribution Utilities (Distutils)</h2>
+                        <p>You download a python packaged which contains a <em>README.txt</em> and a <em>setup.py</em> files:</p>
+                        <pre><code class="bash" data-trim contenteditable>
+python setup.py build
+python setup.py install
+</code></pre>
+                        <br>
+                        <p>Highly recommended: specify an installation directory via prefix:</p>
+<pre><code class="bash" data-trim contenteditable>
+python setup.py install --prefix=/home/brian/python
+</code></pre>
                     </section>
 				</section>
 
