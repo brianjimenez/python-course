@@ -195,7 +195,7 @@ sudo apt-get install python-numpy
 
                     <section>
                         <h2>Python Distribution Utilities (Distutils)</h2>
-                        <p>You download a python packaged which contains a <em>README.txt</em> and a <em>setup.py</em> files:</p>
+                        <p>You download a python packaged file (<a href="http://peak.telecommunity.com/DevCenter/PythonEggs" target="_blank">python egg</a>) which contains a <em>README.txt</em> and a <em>setup.py</em> files:</p>
                         <pre><code class="bash" data-trim contenteditable>
 python setup.py build
 python setup.py install
@@ -206,6 +206,12 @@ python setup.py install
 python setup.py install --prefix=/home/brian/python
 </code></pre>
                     </section>
+
+                    <section>
+                        <h2>pip vs easy_install</h2>
+                        <p><em>easy_install</em> was released in 2004, downloads and installs automatically packages (and dependencies) from PyPI. But <em>easy_install</em> does not support the new <a href="https://python-packaging-user-guide.readthedocs.org/en/latest/peps.html#pep427s" target="_blank">Wheel binary package format</a> while pip does.<br>Furthermore, <em>pip</em> (released in 2008) supports uninstalling packages. <b>You should definetely use pip</b>.</p>
+                    </section>
+
 				</section>
 
 				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
