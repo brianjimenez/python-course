@@ -169,6 +169,7 @@ for element in mylist:
                                 <li><a href="http://www.pymol.org/" target="_blank">PyMol</a></li>
                                 <li><a href="http://life.bsc.es/pid/pydock" target="_blank">PyDock</a></li>
                                 <li><a href="http://life.bsc.es/pid/ccharppi" target="_blank">CCharPPI</a> (autopromo :)</li>
+                                <li><a href="http://ipython.org" target="_blank">IPython</a>: a command shell for Python with browser-based capabilities.</li>
                             </ul>
                         </p>
                     </section>
@@ -197,8 +198,8 @@ sudo apt-get install python-numpy
                         <h2>Python Distribution Utilities (Distutils)</h2>
                         <p>You download a python packaged file (<a href="http://peak.telecommunity.com/DevCenter/PythonEggs" target="_blank">python egg</a>) which contains a <em>README.txt</em> and a <em>setup.py</em> files:</p>
                         <pre><code class="bash" data-trim contenteditable>
-python setup.py build
-python setup.py install
+$ python setup.py build
+$ python setup.py install
 </code></pre>
                         <br>
                         <p>Highly recommended: specify an installation directory via prefix:</p>
@@ -210,8 +211,64 @@ python setup.py install --prefix=/home/brian/python
                     <section>
                         <h2>pip vs easy_install</h2>
                         <p><em>easy_install</em> was released in 2004, downloads and installs automatically packages (and dependencies) from PyPI. But <em>easy_install</em> does not support the new <a href="https://python-packaging-user-guide.readthedocs.org/en/latest/peps.html#pep427s" target="_blank">Wheel binary package format</a> while pip does.<br>Furthermore, <em>pip</em> (released in 2008) supports uninstalling packages. <b>You should definetely use pip</b>.</p>
+<pre><code class="bash" data-trim contenteditable>
+$ pip search bio
+biotools                - A bunch of bioinformatics utilities.
+moa                     - Moa - command-line workflows (in bioinformatics)
+...
+</code></pre>
                     </section>
 
+                    <section>
+                        <h2>virtualenv</h2>
+                        <p>A tool to create isolated Python environments</p>
+                        <br>
+                        <p>It solves in an ellegant way how to install two version of the same python extension in order to use them at the same time.</p>
+<pre><code class="bash" data-trim contenteditable>
+$ virtualenv ENV
+New python executable in ENV/bin/python
+Installing setuptools, pip...done.
+$ cd ENV
+$ ls
+bin  include  lib  local
+$ source bin/activate
+(ENV)brian@daibutsu /home/brian/python/ENV $ pip install spam
+Downloading/unpacking spam
+  Downloading spam-4.0.1.tar.gz
+  Running setup.py (path:/var/www/python/ENV/build/spam/setup.py) egg_info
+for package spam
+Installing collected packages: spam
+  Running setup.py install for spam
+    
+Successfully installed spam
+Cleaning up...
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>virtualenv (II)</h2>
+<pre><code class="python" data-trim contenteditable>
+(ENV)brian@daibutsu /home/brian/ENV $ python
+Python 2.7.6 (default, Mar 22 2014, 22:59:56)
+[GCC 4.8.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import spam
+>>> dir(spam)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 
+'__path__']
+</code></pre>
+<p>Deactivate the virtualenv:</p>
+<pre><code class="python" data-trim contenteditable>
+(ENV)brian@daibutsu /home/brian/ENV $ deactivate
+brian@daibutsu /home/brian/ENV $ python
+Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
+[GCC 4.8.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import spam
+Traceback (most recent call last):
+  File "stdin", line 1, in module
+ImportError: No module named spam
+</code></pre>
+                    </section>
 				</section>
 
 				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
