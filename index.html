@@ -271,8 +271,95 @@ ImportError: No module named spam
                     </section>
 				</section>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Python syntax and native data-types</h2>
+                <section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
+                    <section>
+					    <h2>3. Python syntax and native data-types</h2>
+                    </section>
+
+                    <section>
+                        <h2>Whitespaces</h2>
+                        <ul>
+                            <li>No hard tabs</li>
+                            <li>4 spaces per indentation level.</li>
+                            <li>Never mix them :(</li>
+                            <li>Read <a href="http://legacy.python.org/dev/peps/pep-0008/" target="_blank">PEP-8</a></li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>More about style</h2>
+                        <ul>
+                            <li>joined_lower preferred over camelCase</li>
+                            <li>ClassName</li>
+                            <li>interface, _internal, __private (requires further explanation)</li>
+                            <li>CONSTANT_VARIABLE</li>
+                            <li>variable_collision_</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Explicit and implicit line joining</h2>
+                        <p>Explicit</p>
+                        <pre><code class="python" data-trim contenteditable>
+if year % 4 == 0 and year % 100 != 0 \
+    or year % 400 == 0:
+    print 'leap year'
+                        </code></pre>
+                        <p>Implicit</p>
+                        <pre><code class="python" data-trim contenteditable>
+month_names = ['Januari', 'Februari', 'Maart',      # These are the
+               'April',   'Mei',      'Juni',       # Dutch names
+               'Juli',    'Augustus', 'September',  # for the months
+               'Oktober', 'November', 'December']   # of the year
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>First example</h2>
+                        <pre><code class="python" data-trim contenteditable>
+import sys
+
+
+def say(message):
+    """Says something"""
+    print message
+
+
+if __name__ == "__main__":
+    say(sys.argv[1])
+
+                        </code></pre>
+                        <br>
+                        <p>To execute it (<a href="material/examples/example_1.py" target="_blank">example_1.py</a>):</p>
+                        <pre><code class="bash" data-trim contenteditable>
+$ python example_1.py 'Hello World'
+Hello World
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Second example</h2>
+                        <p>(<a href="material/examples/example_2.py" target="_blank">example_2.py</a>):</p>
+                        <pre><code class="python" data-trim contenteditable>
+import sys
+
+
+def usage():
+    print 'usage: %s message' % sys.argv[0]
+
+
+def say(message):
+    """Says something"""
+    print message
+
+
+if __name__ == "__main__":
+    if len(sys.argv[1:]) != 1:
+        usage()
+        raise SystemExit('Wrong command line')
+    say(sys.argv[1])
+                        </code></pre>
+                    </section>
 				</section>
 
 				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
