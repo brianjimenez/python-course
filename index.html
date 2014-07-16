@@ -644,9 +644,99 @@ def f(a, L=None):
                     </section>
 
 				</section>
-
+                
 				<section data-transition="linear" data-background="#8C4738" data-background-transition="slide">
-					<h2>4. Code organization: modules, packages and magic</h2>
+                    <section>
+					    <h2>4. Code organization: modules, packages and magic</h2>
+                    </section>
+
+                    <section>
+                        <h2>Modules</h2>
+                        <p>A module is any python source file on your python library path. A file called <em>triceratops.py</em> corresponds to a module named <em>triceratops</em>.</p>
+                        <pre><code class="python" data-trim contenteditable>
+import triceratops
+print triceratops.NUMBER_OF_HORNS
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Packages</h2>
+                        <p>A package is a regular folder where a __init__.py file has been created. A package is used for the organization of modules. A package can contain any sub-folder.<p>
+                        <p>We move our <em>triceratops.py</em> module to a folder called <em>dinosaur</em>.</p>
+                        <pre><code class="python" data-trim contenteditable>
+import dinosaur.triceratops
+import dinosaur.apatosaurus
+print dinosaur.triceratops.NUMBER_OF_HORNS
+print dinosaur.apatosaurus.NUMBER_OF_HORNS
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Partial import</h2>
+                        <p>It is inconvenient to use names as dinosaur.triceratops.NUMBER_OF_HORNS.</p>
+                        <p>Instead, we import certain parts in our <b>scope</b>.</p>
+                        <pre><code class="python" data-trim contenteditable>
+from dinosaur.triceratops import NUMBER_OF_HORNS
+from dinosaur.apatosaurus import NUMBER_OF_HORNS as APATOSAURUS_HORNS
+
+print NUMBER_OF_HORNS, APATOSAURUS_HORNS
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Anti-idiom</h2>        
+                        <pre><code class="python" data-trim contenteditable>
+from module import *
+                        </code></pre>
+                        <br><br>
+                        <p>However, it is okay to use it to save typing in interactive sessions.</p>
+                    </section>
+
+                    <section>
+                        <h2>import *</h2>
+                        <p>If you allow your client to import *, you can define the modules to be imported automatically by defining an __all__ variable in __init__.py file:</p>
+                        <pre><code class="python" data-trim contenteditable>
+dinosaurs/
+        __init__.py
+        sauropod/
+                __init__.py
+                apatosaurus.py
+                diplodocus.py
+                camarasaurus.py
+                        </code></pre>
+                        <pre><code class="python" data-trim contenteditable>
+# sauropod.__init__.py file
+__all__ = ['apatosaurus', 'diplodocus', 'camarasaurus']
+
+>>> from dinosaurs.sauropod import *
+print apatosaurus.NECK_LENGTH
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Importing modules</h2>     
+                        <p>A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. </p>
+                        <p>They are executed only the first time the module name is encountered in an import statement</p>
+                        <pre><code class="python" data-trim contenteditable>
+if __name__ == "__main__":
+    print 'Only executed when calling it as a script'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>The module search path</h2>
+                        <p>The order for searching for a given module is:</p>
+                        <ol>
+                            <li>the current directory or the directory containing the input script</li>
+                            <li>PYTHONPATH</li>
+                            <li>the folder where python is installed</li>
+                        </ol>
+                        <p>Take into account that path can be modified in run-time:</p>
+                        <pre><code class="python" data-trim contenteditable>
+import sys
+sys.path.append('/home/brian/python/dinosaurs')
+                        </code></pre>
+                    </section>
 				</section>
 
 				<section>
