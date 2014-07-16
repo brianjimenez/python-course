@@ -434,6 +434,43 @@ results = [x for x in xrange(20) if x % 2 == 0]
                     </section>
 
                     <section>
+                        <h2>Iterating</h2>
+                        <p>Over a list</p>
+                        <pre><code class="python" data-trim contenteditable>
+monsters = ['Kraken', 'Leviathan', 'Uroborus', 'Hydra']
+
+# Method 1
+for monster in monsters:
+    print monster
+
+# Get the index in the array
+for i, monster in enumerate(monsters):
+    print i, monster
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Iterating</h2>
+                        <p>Over a dictionary</p>
+                        <pre><code class="python" data-trim contenteditable>
+country_codes = {34: 'Spain', 376: 'Andorra', 41: 'Switzerland', 424: None}
+
+# By key
+for country_code in country_codes.keys():
+    print country_code
+
+# By value
+for country in country_codes.values():
+    print country
+
+# By both
+for country_code, country in country_codes.iteritems():
+    print country_code, country
+
+                        </code></pre>
+                    </section>
+
+                    <section>
                         <h2>String concatenation</h2>
                         <pre><code class="python" data-trim contenteditable>
 >>> my_list = ['k', 'o', 'n', 'n', 'i', 'c', 'h', 'i', 'w', 'a']
