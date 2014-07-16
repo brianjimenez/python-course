@@ -538,6 +538,32 @@ if __name__ == "__main__":
                     </section>
 
                     <section>
+                        <h2>Additional control words</h2>
+                        <ul>
+                            <li>if, elif, else</li>
+                            <li>break, continue</li>
+                            <li>pass</li>
+                            <li>swtch = if..elif..elif..else</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Defining functions</h2>
+                        <pre><code class="python" data-trim contenteditable>
+def attacked (monster, survivors=0):
+    print 'A %s attacked our village!' % monster
+    if survivors:
+        print 'Luckily, %d people survive' % survivors
+
+>>> attacked('Kraken', 42)
+A Kraken attacked our village!
+Luckily, 42 people survive
+>>> attacked('Cthulhu')
+A Cthulhu attacked our village!
+                        </code></pre>
+                    </section>
+
+                    <section>
                         <h2>Reading from files</h2>
                         <pre><code class="python" data-trim contenteditable>
 # Method 1
@@ -569,6 +595,52 @@ out = open('a_file.txt', 'w')
 for i in xrange(10):
     out.write("%d%s" % (i, os.linesep))
                         </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>In python, everything is an object</h3>
+                        <pre><code class="python" data-trim contenteditable>
+>>> eggs = 10
+>>> print eggs.__add__
+&lt;method-wrapper '__add__' of int object at 0x184d080&gt;
+>>> print dir(eggs)
+['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Common mistake</h2>
+                        <p>Mutable and immutable objects</p>
+                        <pre><code class="python" data-trim contenteditable>
+def f(a, L=[]):
+    L.append(a)
+    return L
+
+>>> print f(1)
+[1]
+>>> print f(2)
+[1, 2]
+                        </code></pre>
+                        <pre><code class="python" data-trim contenteditable>
+def f(a, L=None):
+    if L is None:
+        L = []
+    L.append(a)
+    return L
+
+>>> print f(1)
+[1]
+>>> print f(2)
+[2]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Challenge 1</h2>
+                            <p>Write a program which will find all numbers which ara divisible by 7, but are not a multiple of 5, or by 13 in the range [42..1200].</p>
+                            <p> Print the numbers in reverse order and comma separated.</p>
+                            <br><br>
+                            <p><a href="material/challenges/challenge_1.py" target="_blank">#</a>
                     </section>
 
 				</section>
