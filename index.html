@@ -6,7 +6,7 @@
 
 		<title>Python Course - BSC Life Sciences Department</title>
 
-		<meta name="author" content="Brian Jimenez <bjimenez (at) bsc.es>">
+		<meta name="author" content="Brian Jimenez" >
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -85,7 +85,7 @@
                         </ul>
 					</section>
                     <section>
-                        <h2>The Zen of Python (<a href="http://legacy.python.org/dev/peps/pep-0020/" target=_blank">PEP20</a>)</h2>
+                        <h2>The Zen of Python (<a href="http://legacy.python.org/dev/peps/pep-0020/" target="_blank">PEP20</a>)</h2>
                         <p>PEP is a <em>Python Enhancement Proposal</em></p>
                         <br>
                         <ul>
@@ -301,9 +301,8 @@ ImportError: No module named spam
                         <h2>Explicit and implicit line joining</h2>
                         <p>Explicit</p>
                         <pre><code class="python" data-trim contenteditable>
-if year % 4 == 0 and year % 100 != 0 \
-    or year % 400 == 0:
-    print 'leap year'
+leap_year = year % 4 == 0 and year % 100 != 0 \
+    or year % 400 == 0
                         </code></pre>
                         <p>Implicit</p>
                         <pre><code class="python" data-trim contenteditable>
@@ -313,16 +312,144 @@ month_names = ['Januari', 'Februari', 'Maart',      # These are the
                'Oktober', 'November', 'December']   # of the year
                         </code></pre>
                     </section>
+                    
+                    <section>
+                    	<h2>Numeric types</h2>
+                    	<pre><code class="python" data-trim contenteditable>
+int_var = sys.maxint
+
+float_var = int_var / 2.0
+
+long_var = int_var + 1
+
+complex_var = 1.5 + 3j
+
+# Some operations
+f = float(int_var)
+i = int(float_var)
+
+round(f)
+
+x = 2 ** 5
+
+math.floor(f)
+                    	</code></pre>
+                    </section>
 
                     <section>
-                        <h2>Idioms</h2>
-                        <p>Swap values</p>
+                    	<h2>Sequence types</h2>
+                    	<pre><code class="python" data-trim contenteditable>
+string_literal = 'Python course'
+
+unicode_literal = u'España'
+
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
+					'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+
+prime_numbers = [2, 3, 5, 7]
+
+country_codes = {34: 'Spain', 376: 'Andorra', 41: 'Switzerland', 424: None}
+
+birth_year = ('Stephen Hawking', 1942)
+                    	</code></pre>
+                    </section>
+                    
+                    <section>
+                    	<h2>Operations on sequence types</h2>
+                    	<pre><code class="python" data-trim contenteditable>
+>>> print string_literal + ' is cool'
+Python course is cool
+
+planets.append('Mercury')
+>>> print planets
+['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 
+'Saturn', 'Uranus', 'Neptune', 'Pluto']
+>>> planets[-1]
+'Pluto'
+>>> planets[:4]
+['Mercury', 'Venus', 'Earth', 'Mars']
+>>> planets[0:4]
+['Mercury', 'Venus', 'Earth', 'Mars']
+>>> planets[-1] = 'Pluto is not a planet'
+                    	</code></pre>
+                    </section>
+
+							<section>
+                    	<h2>Operations on sequence types</h2>
+                    	<pre><code class="python" data-trim contenteditable>
+>>> planets
+['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn',
+'Uranus', 'Neptune', 'Pluto']
+>>> planets.remove('Pluto')
+>>> planets
+['Mercury', 'Venus', 'Earth', 'Mars', 
+'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+>>> del planets[5]
+>>> planets
+['Mercury', 'Venus', 'Earth', 'Mars', 
+'Jupiter', 'Uranus', 'Neptune']
+>>> del planets[5:7]
+>>> planets
+['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter']
+
+birth_year = 'Stephen Hawking', 1942  # ',' constructor
+>>> birth_year[1] = 1943     # Error!
+                    	</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Useful idioms</h2>
                         <pre><code class="python" data-trim contenteditable>
+# Swap values
 b, a = a, b
-                        </code></pre>
-                        <p>Unpacking</p>
-                        <pre><code class="python" data-trim contenteditable>
+
+# Unpacking
 atom_name, atom_number, residue_name, chain_id = ['CA', 1, 'ALA', 'A']
+
+zeroes = [0] * 100
+spaces = 100 * " "
+
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> xrange(10)
+xrange(10)
+>>> for i in xrange(10):
+...     print i,
+0 1 2 3 4 5 6 7 8 9
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>List comprehension</h2>
+                        <pre><code class="python" data-trim contenteditable>
+# Non-idiomatic
+results = []
+    for i in range(20):
+        if i % 2 == 0:
+            results.append(i)
+
+# Pythonista style
+results = [x for x in xrange(20) if x % 2 == 0]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>String concatenation</h2>
+                        <pre><code class="python" data-trim contenteditable>
+>>> my_list = ['k', 'o', 'n', 'n', 'i', 'c', 'h', 'i', 'w', 'a']
+
+# Method 1
+s = ''
+for c in my_list:
+    s += c
+
+# Method 2
+s = ''
+for c in my_list:
+    s = "%s%s" % (s, c)
+
+# Idiomatic
+''.join(my_list)
                         </code></pre>
                     </section>
 
@@ -372,6 +499,41 @@ if __name__ == "__main__":
     say(sys.argv[1])
                         </code></pre>
                     </section>
+
+                    <section>
+                        <h2>Reading from files</h2>
+                        <pre><code class="python" data-trim contenteditable>
+# Method 1
+f = open('a_file.txt')
+for line in f:
+    print line,
+f.close()
+
+# Method 2
+f = open('a_file.txt')
+lines = f.readlines()
+for line in f:
+    print line,
+f.close()
+
+# Method 3
+with open('a_file.txt') as f:
+    for line in f.readlines():
+        print line,
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Writing to files</h2>
+                        <pre><code class="python" data-trim contenteditable>
+import os
+
+out = open('a_file.txt', 'w')
+for i in xrange(10):
+    out.write("%d%s" % (i, os.linesep))
+                        </code></pre>
+                    </section>
+
 				</section>
 
 				<section data-transition="linear" data-background="#8C4738" data-background-transition="slide">
