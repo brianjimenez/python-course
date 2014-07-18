@@ -749,7 +749,210 @@ sys.path.append('/home/brian/python/dinosaurs')
 				</section>
 
                 <section data-background="#DD8547">
-                    <h2>6. Object oriented program design</h2>
+                    <section>
+                        <h2>6. Object oriented program design</h2>
+                    </section>
+
+                    <section>
+                        <h2>Object oriented programming</h2>
+                        <h4>Paradigm where objects have data fields and associated procedures (methods).</h4>
+                        <p>An object is an abstract data type with the addition of polymorphism and inheritance.</p>
+                        <br>
+                        <p>The goal is to design modular and reusable software.</p>
+                        <p>- Encapsulation and information hiding.</p>
+                        <br>
+                        <p>Avoid <a href="http://en.wikipedia.org/wiki/Spaghetti_code" target"_blank">Spaghetti code</a>.</p>
+                    </section>
+
+                    <section>
+                        <h2>Object &amp; Class</h2>
+                        <p>A class is a binding of methods and variables in a single unit.</p>
+                        <p><b>An object is an instance of a class.</b></p>
+                        <br>
+                        <p>A class is a template which defines the methods (behavior) and variables (state) to be included in a particular object.</p>
+                        <br>
+                        <p>If a class is an instance of a class too, then this class is called metaclass.</p>
+                    </section>
+
+                    <section>
+                        <h2>Object &amp; Class, examples</h2>
+                        <ul>
+                            <li>Complex is a class, Ubiquitin is an object.</li>
+                            <li>ResearchCenter is a class, BSC is an object.</li>
+                            <li>Monster is a class, Leviathan is an object.</li>
+                            <li>Animal is a metaclass, a dog is a class and my dog is an object.</li>
+                        </ul>
+                        <br>
+                        <img src="images/ubiquitin.png" style="width:300px;" />
+                    </section>
+
+                    <section>
+                        <h2>Simple class in Python</h2>
+                        <pre><code class="python" data-trim contenteditable>
+class Monster(object):
+    """Represents a mythological creature"""
+    pass
+
+
+>>> kraken = Monster()
+>>> type(kraken)
+&lt;class '__main__.Monster'&gt;
+>>> isinstance(kraken, Monster)
+True
+>>> leviathan = Monster()
+>>> type(leviathan) == type(kraken)
+True
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Constructor</h2>
+                        <pre><code class="python" data-trim contenteditable>
+class Monster(object):
+    """Represents a mythological creature"""
+
+    def __init__(self, origin):
+        self.origin = origin
+
+
+>>> kraken = Monster('Scandinavia')
+>>> kraken.origin
+'Scandinavia'
+>>> kraken.roar()
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+AttributeError: 'Monster' object has no attribute 'roar'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Class attributes and methods</h2>
+                        <pre><code class="python" data-trim contenteditable>
+class Monster(object):
+    latin_name = 'monstrum'
+
+    def __init__(self, origin):
+        self.origin = origin
+
+    @classmethod
+    def get_latin(cls):
+        return cls.latin_name
+
+>>> kraken = Monster('Scandinavia')
+>>> print Monster.get_latin()
+monstrum
+>>> kraken.get_latin()
+monstrum
+>>> kraken.get_latin
+&lt;bound method type.get_latin of &lt;class '__main__.Monster'&gt;&gt;
+
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Static methods</h2>
+                        <pre><code class="python" data-trim contenteditable>
+class Monster(object):
+
+    def __init__(self, origin):
+        self.origin = origin
+
+    @staticmethod
+    def battle(monster1, monster2):
+        print 'A monster from %s is fighting a \
+second monster from %s' % (monster1.origin, monster2.origin)
+
+>>> kraken = Monster('Scandinavia')
+>>> leviathan = Monster('Ancient Middle East')
+>>> Monster.battle(kraken, leviathan)
+A monster from Scandinavia is fighting a second monster from 
+Ancient Middle East
+                        </code></pre>
+                        <p>Full example in <a href="material/examples/example_3.py" target="_blank">example_3.py</a>
+                    </section>
+
+                    <section>
+                        <h2>Inheritance</h2>
+                        <pre><code class="python" data-trim contenteditable>
+class Dinosaur(object):
+
+    def __init__(self, name, era='Cretaceous'):
+        self.name = name
+        self.era = era
+
+    def eat(self):
+        pass
+
+
+class TyrannosaurusRex(Dinosaur):
+
+    def __init__(self):
+        Dinosaur.__init__(self, 'Tyrannosaurus Rex')
+
+    def eat(self):
+        print 'I am carnivore'
+                        </code></pre>
+                        <p>Full example in <a href="material/examples/example_4.py" target="_blank">example_4.py</a>
+                    </section>
+
+                    <section>
+                        <h2>Challenge 2: The Watermaker</h2>
+                            <p>Write a program to create water</p>
+                            <ul>
+                                <li>There are two types of possible atoms: Oxygen and Hydrogen.</li>
+                                <li>Water = H2O</li>
+                                <li>Read from input the number of atoms of each kind</li>
+                                <li>And calculate the number of water molecules and the remaindings of the other atoms.</li>
+                            </ul>
+                            <p><a href="material/challenges/challenge_2.py" target="_blank">#</a>
+                    </section>
+
+                    <section>
+                        <h2>Challenge 3</h2>
+                            <p>We're just back from the famous Jurassic Park. Despite, there were only two kinds of dinosaurs: Tyrannosaurus Rex and Triceratops, we enjoyed a lot the dinosaurs battles...Write a program to simulate those battles and take into account:</p>
+                            <ul>
+                                <li>As dinosaurs, both T-rex and Triceratops roar and they battle each other.</p>
+                                <li>T-rex size varies in the range 5 to 15 meters.</li>
+                                <li>Triceratops size usually is between 7 and 10 meters.</li>
+                                <li>If the number of T-rex is more than the double of Triceratops, they kill all the herd of Triceratops.</li>
+                                <li>In the other hand, if the sum of Triceratop sizes is bigger than Tyrannosaurus, they kill one of the Tyrannosaurus.</li>
+                                <li>Otherwise, the battle finishes OK.</li>
+                            </ul>
+                            <p><a href="material/challenges/challenge_3.py" target="_blank">#</a>
+                    </section>
+
+                    <section>
+                        <h2>Exceptions</h2>
+                        <p>Exceptions are errors detected during execution.</p>
+                        <p>Exceptions can be handled:</p>
+                        <pre><code class="python" data-trim contenteditable>
+while True:
+    try:
+        x = int(raw_input("Please enter a number: "))
+        break
+    except ValueError:
+        print "Oops!  That was no valid number.  Try again..."
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>"Easier to ask forgiveness than permission"</p>
+                        <pre><code class="python" data-trim contenteditable>
+# Non-idiomatic
+i = raw_input()
+if type(i) == type(1):
+    #do wathever
+else:
+    print 'Error'
+
+# Pythonic
+try:
+    i = int(raw_input())
+except ValueError:
+    print 'Error'
+                        </code></pre>
+                    </section>
+
                 </section>
 
                 <section data-background="#3F4C6C">
