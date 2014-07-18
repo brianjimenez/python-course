@@ -740,12 +740,48 @@ sys.path.append('/home/brian/python/dinosaurs')
 				</section>
 
 				<section>
-					<h2>5. Functional programming</h2>
-					<blockquote cite="http://quotes.qerub.se/post/51021723/functional-programming-is-like-describing-your">
-						&ldquo;Functional programming is like describing your problem to a mathematician.<br><br> 
-						Imperative programming is like giving instructions to an idiot.&rdquo;
-					</blockquote>
-                    <img src="images/FunctionalProgramming.png" />
+                    <section>
+    					<h2>5. Functional programming</h2>
+	    				<blockquote cite="http://quotes.qerub.se/post/51021723/functional-programming-is-like-describing-your">
+		    				&ldquo;Functional programming is like describing your problem to a mathematician.<br><br> 
+			    			Imperative programming is like giving instructions to an idiot.&rdquo;
+				    	</blockquote>
+                        <img src="images/FunctionalProgramming.png" />
+                    </section>
+
+                    <section>
+                        <h2>First-class functions</h2>
+                        <pre><code class="python" data-trim contenteditable>
+def add(x, y):
+    return x + y
+
+# Functions are only run when they're called
+# with parenthesis
+def apply_function(f, x, y):
+    return f(x,y)
+
+>>> z = apply_function(add, 1, 2)
+3
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Anonymous functions</h2>
+                        <p>They are created using the lambda statement. Commonly used when passing a simple function as an argument to another functions.</p>
+                        <pre><code class="python" data-trim contenteditable>
+def call_function(f, *args):
+    return f(*args)
+
+call_function(lambda x, y: x + y, 4, 5)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Closures</h2>
+                        <p>You can refer to objects from the scope a function was declared in (only objects).</p>
+                        <pre><code class="python" data-trim contenteditable>
+                        </code></pre>
+                    </section>
 				</section>
 
                 <section data-background="#DD8547">
