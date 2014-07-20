@@ -98,7 +98,7 @@
                         </ul>
                         <br><br>
                         <p>Try this:</p>
-                        <pre><code data-trim contenteditable> 
+                        <pre><code data-trim contenteditable>
 $ python
 >>> import this
                         </code></pre>
@@ -158,7 +158,7 @@ for element in mylist:
                             Visit the python wiki for a more comprehensive list: <a href="https://wiki.python.org/moin/NumericAndScientific" target="_blank">Numeric and Scientific</a>.
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Scientific software</h2>
                         <p>
@@ -239,7 +239,7 @@ Downloading/unpacking spam
 for package spam
 Installing collected packages: spam
   Running setup.py install for spam
-    
+
 Successfully installed spam
 Cleaning up...
 </code></pre>
@@ -253,14 +253,14 @@ Python 2.7.6 (default, Mar 22 2014, 22:59:56)
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import spam
 >>> dir(spam)
-['__builtins__', '__doc__', '__file__', '__name__', '__package__', 
+['__builtins__', '__doc__', '__file__', '__name__', '__package__',
 '__path__']
 </code></pre>
 <p>Deactivate the virtualenv:</p>
 <pre><code class="python" data-trim contenteditable>
 (ENV)brian@daibutsu /home/brian/ENV $ deactivate
 brian@daibutsu /home/brian/ENV $ python
-Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
+Python 2.7.6 (default, Mar 22 2014, 22:59:56)
 [GCC 4.8.2] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import spam
@@ -276,6 +276,15 @@ ImportError: No module named spam
 					    <h2>3. Python syntax and native data-types</h2>
                     </section>
 
+					<section>
+						<h2>Hello world</h2>
+						<pre><code class="python" data-trim contenteditable>
+$ python
+>>> print 'Hello world'
+Hello world
+						</code></pre>
+					</section>
+
                     <section>
                         <h2>Whitespaces</h2>
                         <ul>
@@ -285,7 +294,7 @@ ImportError: No module named spam
                             <li>Read <a href="http://legacy.python.org/dev/peps/pep-0008/" target="_blank">PEP-8</a></li>
                         </ul>
                     </section>
-                    
+
                     <section>
                         <h2>More about style</h2>
                         <ul>
@@ -312,7 +321,7 @@ month_names = ['Januari', 'Februari', 'Maart',      # These are the
                'Oktober', 'November', 'December']   # of the year
                         </code></pre>
                     </section>
-                    
+
                     <section>
                     	<h2>Numeric types</h2>
                     	<pre><code class="python" data-trim contenteditable>
@@ -343,7 +352,7 @@ string_literal = 'Python course'
 
 unicode_literal = u'España'
 
-planets = ['Mercury', 'Venus', 'Earth', 'Mars', 
+planets = ['Mercury', 'Venus', 'Earth', 'Mars',
 					'Jupiter', 'Saturn', 'Uranus', 'Neptune']
 
 prime_numbers = [2, 3, 5, 7]
@@ -353,7 +362,7 @@ country_codes = {34: 'Spain', 376: 'Andorra', 41: 'Switzerland', 424: None}
 birth_year = ('Stephen Hawking', 1942)
                     	</code></pre>
                     </section>
-                    
+
                     <section>
                     	<h2>Operations on sequence types</h2>
                     	<pre><code class="python" data-trim contenteditable>
@@ -362,7 +371,7 @@ Python course is cool
 
 planets.append('Mercury')
 >>> print planets
-['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 
+['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter',
 'Saturn', 'Uranus', 'Neptune', 'Pluto']
 >>> planets[-1]
 'Pluto'
@@ -382,11 +391,11 @@ planets.append('Mercury')
 'Uranus', 'Neptune', 'Pluto']
 >>> planets.remove('Pluto')
 >>> planets
-['Mercury', 'Venus', 'Earth', 'Mars', 
+['Mercury', 'Venus', 'Earth', 'Mars',
 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
 >>> del planets[5]
 >>> planets
-['Mercury', 'Venus', 'Earth', 'Mars', 
+['Mercury', 'Venus', 'Earth', 'Mars',
 'Jupiter', 'Uranus', 'Neptune']
 >>> del planets[5:7]
 >>> planets
@@ -644,7 +653,7 @@ def f(a, L=None):
                     </section>
 
 				</section>
-                
+
 				<section data-transition="linear" data-background="#8C4738" data-background-transition="slide">
                     <section>
 					    <h2>4. Code organization: modules, packages and magic</h2>
@@ -684,7 +693,7 @@ print NUMBER_OF_HORNS, APATOSAURUS_HORNS
                     </section>
 
                     <section>
-                        <h2>Anti-idiom</h2>        
+                        <h2>Anti-idiom</h2>
                         <pre><code class="python" data-trim contenteditable>
 from module import *
                         </code></pre>
@@ -714,7 +723,7 @@ print apatosaurus.NECK_LENGTH
                     </section>
 
                     <section>
-                        <h2>Importing modules</h2>     
+                        <h2>Importing modules</h2>
                         <p>A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. </p>
                         <p>They are executed only the first time the module name is encountered in an import statement</p>
                         <pre><code class="python" data-trim contenteditable>
@@ -743,7 +752,7 @@ sys.path.append('/home/brian/python/dinosaurs')
                     <section>
     					<h2>5. Functional programming</h2>
 	    				<blockquote cite="http://quotes.qerub.se/post/51021723/functional-programming-is-like-describing-your">
-		    				&ldquo;Functional programming is like describing your problem to a mathematician.<br><br> 
+		    				&ldquo;Functional programming is like describing your problem to a mathematician.<br><br>
 			    			Imperative programming is like giving instructions to an idiot.&rdquo;
 				    	</blockquote>
                         <img src="images/FunctionalProgramming.png" />
@@ -901,7 +910,7 @@ second monster from %s' % (monster1.origin, monster2.origin)
 >>> kraken = Monster('Scandinavia')
 >>> leviathan = Monster('Ancient Middle East')
 >>> Monster.battle(kraken, leviathan)
-A monster from Scandinavia is fighting a second monster from 
+A monster from Scandinavia is fighting a second monster from
 Ancient Middle East
                         </code></pre>
                         <p>Full example in <a href="material/examples/example_3.py" target="_blank">example_3.py</a>
@@ -1008,9 +1017,149 @@ except ValueError:
                     <section>
                         <h2>7. Unit testing</h2>
                     </section>
-                    
+
+					<section>
+						<h2>About testing</h2>
+						<p>Testing code is very important.</p>
+						<br>
+						<p>It helps you finding bugs and to have a more decoupled architecture.</p>
+					</section>
+
+					<section>
+						<h2>Unit testing</h2>
+						<p>A test should focus on an specific tiny part of functionality and prove it correct.</p>
+						<br>
+						<p>Each unit test should be independent: setUp() and tearDown() methods.</p>
+					</section>
+
+					<section>
+						<h2>unittest</h2>
+						<p>It's the batteries-included module in the Python standard library.</p>
+						<p>Based on Java Junit.</p>
+						<p>Full example in <a href="material/examples/example_5.py" target="_blank">example_5.py</a>
+						<pre><code class="python" data-trim contenteditable>
+import unittest
+
+def my_add_function(x, y):
+    return x + y
+
+class MyAddFunctionTest(unittest.TestCase):
+    def test(self):
+        self.assertEqual(7, my_add_function(3,4))
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>doctest</h2>
+						<p>This module searches for pieces of text that look like interactive sessions in docstrings (">>>").</p>
+						<p>They are useful as documentation of the main use cases.</p>
+						<p>Full example in <a href="material/examples/example_6.py" target="_blank">example_6.py</a>
+						<pre><code class="python" data-trim contenteditable>
+def my_add(x, y):
+	"""Adds x and y.
+
+	>>> my_add(2,3)
+	5
+	>>> my_add(5,-5)
+	0
+	"""
+	return x + y
+
+
+if __name__ == "__main__":
+	import doctest
+	doctest.testmod()
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>nose</h2>
+						<p>Extends unittest to make testing easier.</p>
+						<p>Automatic test discovery.</p>
+						<p>Plugins community.</p>
+						<p>Official documentation: <a href="https://nose.readthedocs.org/en/latest/" target="_blank">nose 1.3.3</a></p>
+					</section>
+
+					<section>
+						<h2>Testing with nose</h2>
+						<p>Looks for files with 'test' in the name and executes everything on the module which matches (?:^|[\\b_\\.-])[Tt]est</p>
+						<p>Example in <a href="material/examples/test_example_7.py" target="_blank">test_example_7.py</a>
+						<pre><code class="python" data-trim contenteditable>
+def test():
+	assert True
+						</code></pre>
+						<pre><code class="bash" data-trim contenteditable>
+$ nosetests-2.7
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+
+						</code></pre>
+					</section>
+
+					<section>
+						<p>Circle class</p>
+						<pre><code class="python" data-trim contenteditable>
+import math
+
+class Circle(object):
+
+    def __init__(self, x, y, r):
+        self.x = x
+        self.y = y
+        self.r = r
+
+    def area(self):
+        return math.pi * self.r * self.r
+
+						</code></pre>
+					</section>
+
+					<section>
+						<p>Testing a Circle class</p>
+						<pre><code class="python" data-trim contenteditable>
+class TestCircle:
+
+  def setUp(self):
+    self.c = Circle(0., 0., 3.)
+
+  def tearDown(self):
+    pass
+
+  def test_area(self):
+    assert_almost_equals(28.27433388, self.c.area())
+						</code></pre>
+						<p>Example in <a href="material/examples/test_example_8.py" target="_blank">test_example_8.py</a>
+					</section>
+
+					<section>
+						<h2>More about nose</h2>
+						<p>It is possible to test exceptions using @raises decorator</p>
+						<pre><code class="python" data-trim contenteditable>
+@raises(TypeError, ValueError)
+def test_raises_type_error():
+    raise TypeError("This test passes")
+
+@raises(Exception)
+def test_that_fails_by_passing():
+    pass
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>More about nose</h2>
+						<p>Timed tests</p>
+						<pre><code class="python" data-trim contenteditable>
+@timed(.1)
+def test_that_fails():
+    time.sleep(.2)
+						</code></pre>
+					</section>
+
                 </section>
-                
+
                 <section data-background="#8C3D2D">
                     <section>
                         <h2>8. Advanced topics and performance tuning</h2>
