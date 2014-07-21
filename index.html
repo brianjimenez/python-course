@@ -1255,6 +1255,26 @@ cdef my_function(double x, double y):
     cdef double f;
     f = sin(x) + cos(y)
     return f
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Challenge 4</h2>
+                            <p>Write a program to calculate the Fibonacci series up to n=2000.</p>
+                            <br>
+                            <p>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597</p>
+                            <br>
+                            <p><a href="material/challenges/challenge_4/fib.pyx" target="_blank">#</a>
+                            <pre><code class="bash" data-trim contenteditable>
+$ time python test_fib.py 
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+
+real    0m0.016s
+user    0m0.010s
+sys 0m0.006s
+                        </code></pre>
+                    </section>
+                    
                 </section>
 
 			</div>
