@@ -1243,6 +1243,18 @@ sys 0m0.008s
                         <p>24x performance</p>
                     </section>
 
+                    <section>
+                        <h3>Precompiler directives, import C libraries</h3>
+                        <pre><code class="bash" data-trim contenteditable>
+#cython: boundscheck=False
+#cython: wraparound=False
+
+from libc.math cimport sin, cos
+
+cdef my_function(double x, double y):
+    cdef double f;
+    f = sin(x) + cos(y)
+    return f
                 </section>
 
 			</div>
