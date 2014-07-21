@@ -1164,6 +1164,85 @@ def test_that_fails():
                     <section>
                         <h2>8. Advanced topics and performance tuning</h2>
                     </section>
+
+                    <section>
+                        <h3>cython</h3>
+                        <p>It is a Python to C source code translator which integrates with the CPython interpreter at low level.</p>
+                        <p>Cython generates CPython extension modules using a superset of the Python language.</p>
+                    </section>
+
+                    <section>
+                        <h3>cython: hello world</h3>
+                        <pre><code class="python" data-trim contenteditable>
+# hello.pyx
+def say_hello():
+    print "Hello World!"
+                        </code></pre>
+                        <pre><code class="python" data-trim contenteditable>
+# a python file
+import hello
+hello.say_hello()
+                        </code></pre>
+                        <pre><code class="python" data-trim contenteditable>
+# setup.py
+from distutils.core import setup
+from Cython.Build import cythonize
+ 
+setup(name = 'Hello world app',
+      ext_modules = cythonize("*.pyx"))
+                        </code></pre>
+                        <p>This extension has to be compiled:</p>
+                        <pre><code class="bash" data-trim contenteditable>
+$ python setup.py build_ext --inplace
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>cython: time comparison</h3>
+                        <pre><code class="python" data-trim contenteditable>
+# Pure python version. t1.py
+def test(value):
+    for i in xrange(value):
+    i**2
+    if(i==1000000):
+        print i
+
+test(10000001)
+                        </code></pre>
+                        <pre><code class="python" data-trim contenteditable>
+# Cython version. ct1.pyx
+def test(long long value):
+    cdef long long i
+    cdef long long z
+    for i in xrange(value):
+        z = i**2
+        if(i==1000000):
+            print i
+        if z < i:
+            print "yes"
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>cython: time comparison</h3>
+                        <pre><code class="bash" data-trim contenteditable>
+$ time python t1.py
+1000000
+
+real    0m0.819s
+user    0m0.809s
+sys 0m0.008s
+
+$ time python ct1.py
+1000000
+
+real    0m0.034s
+user    0m0.025s
+sys 0m0.008s
+                        </code></pre>
+                        <p>24x performance</p>
+                    </section>
+
                 </section>
 
 			</div>
