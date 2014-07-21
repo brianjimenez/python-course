@@ -1274,6 +1274,70 @@ user    0m0.010s
 sys 0m0.006s
                         </code></pre>
                     </section>
+
+                    <section>
+                        <h2>Special methods</h2>
+                        <p>Methods to re-define default object behavior.</p>
+                        <pre><code class="python" data-trim contenteditable>
+__new__(cls, [...)
+
+__init__(self, [...)
+
+__del__(self)
+
+# Returns negative if self &lt; other, zero if self == other,
+# positive otherwise
+__cmp__(self, other)
+
+__eq__(self, other)
+__ne__(self, other)
+__lt__(self, other)
+__le__(self, other)
+__gt__(self, other)
+__ge__(self, other)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Special methods II</h2>
+                        <pre><code class="python" data-trim contenteditable>
+# self + other
+__add__(self, other)
+__sub__(self, other)
+__mul__(self, other)
+
+# other + self
+__radd__(self, other)
+__rsub__(self, other)
+__rmul__(self, other)
+
+# self += other
+__iadd__(self, other)
+__isub__(self, other)
+__imul__(self, other)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Special methods III</h2>
+                        <pre><code class="python" data-trim contenteditable>
+# Called when str(object)
+__str__(self)
+
+# Called when repr(object)
+__repr__(self)
+
+# Called when len(object)
+__len__(self)
+
+# Called when self[key]
+__getitem__(self, key)
+
+# Called when x(args)
+__call__(self, [args...])
+                        </code></pre>
+                    </section>
+
                     
                 </section>
 
