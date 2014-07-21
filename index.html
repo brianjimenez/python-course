@@ -786,11 +786,67 @@ call_function(lambda x, y: x + y, 4, 5)
                     </section>
 
                     <section>
-                        <h2>Closures</h2>
-                        <p>You can refer to objects from the scope a function was declared in (only objects).</p>
+                        <h2>Idioms</h2>
+                        <p></p>
                         <pre><code class="python" data-trim contenteditable>
+>>> lst = ["1", "2", "3", "4", "5"]
+map(string.atoi, lst)
+[1, 2, 3, 4, 5]
+
+def add(x, y):
+    return x + y
+>>> lst = [1, 2, 3, 4, 5]
+>>> sum_lst = reduce(add, lst)
+15
+
+def is_odd(x):
+    return x % 2 == 1
+>>> odd_nums = filter(is_odd, range(0,101))
+[1, 3, 5, ... 99]
                         </code></pre>
                     </section>
+
+
+                    <section>
+                        <h2>Closures</h2>
+                        <blockquote cite="www.shutupandship.com/2012/01/python-closures-explained.html">
+                        "A closure is a function object that remembers values in enclosing scopes regardless of whether those scopes are still present in memory."
+                        </blockquote>
+                        <pre><code class="python" data-trim contenteditable>
+def generate_power_func(n):
+    def nth_power(x):
+        return x**n
+    return nth_power
+
+>>> raised_to_4 = generate_power_func(4)
+>>> raised_to_4
+&lt;function nth_power at 0x7fe5a83737d0&gt;
+>>> raised_to_4(2)
+16
+>>> del generate_power_func
+>>> raised_to_4(2)
+16
+>>> print raised_to_4.__closure__
+(&lt;cell at 0x7fe5a8377788: int object at 0x263f110&gt;,)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Decorators</h2>
+                        <p>It is possible to wrap or "decorate" functions or classes:</p>
+                        <pre><code class="python" data-trim contenteditable>
+def by_two(original_function):
+    def new_function(x, y):
+        return original_function(x, y) * 2
+    return new_function
+
+@by_two
+def add(x, y):
+    return x + y
+                        </code></pre>
+                        <p>It is possible to stack multiple decorators :)</p>
+                    </section>
+
 				</section>
 
                 <section data-background="#DD8547">
@@ -1338,9 +1394,63 @@ __call__(self, [args...])
                         </code></pre>
                     </section>
 
+                    <section>
+                        <h2>Iterators</h2>
+                        <p>An iterator is an object adhering to the iterator protocol, which means that it has a next method and raise StopIteration exception if error.</p>
+                        <p>The iterator allows to loop just once and holds the state, it's possible to have several iterators over the same sequence.</p>
+                        <pre><code class="python" data-trim contenteditable>
+nums = [1, 2, 3]
+>>> it = iter(nums)
+>>> next(it)
+1
+>>> it.next()
+2
+>>> next(it)
+3
+>>> next(it)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+StopIteration
+                        </code></pre>
+                        <p>in for..in loop we require the __iter__() method.</p>
+                    </section>
+
+                    <section>
+                        <h2>Generators</h2>
+                        <p>Very similar in concept to iterators, the basis for list comprehensions.</p>
+                        <p>The special word <em>yield</em> marks a function as a generator. yield stops the execution of the function:</p>
+                        <pre><code class="python" data-trim contenteditable>
+>>> def f():
+...   yield 1
+...   yield 2
+>>> gen = f()
+>>> gen.next()
+1
+>>> gen.next()
+2
+>>> gen.next()
+Traceback (most recent call last):
+ File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+StopIteration
+                        </code></pre>
+                    </section>
                     
                 </section>
 
+                <section>
+                    <h2>Citations</h2>
+                    <ul>
+                        <li><a href="https://docs.python.org/2/" target="_blank">Python v2.7.8 documentation</a></li>
+                        <li><a href="http://www.shutupandship.com/2012/01/python-closures-explained.html" target="_blank">Python Closures Explained</a></li>
+                        <li><a href="http://scipy-lectures.github.io/advanced/advanced_python/" target="_blank">Advanced Python Constructs</a></li>
+                        <li><a href="http://courses.cms.caltech.edu/cs11/material/python/misc/python_idioms.html" target="_blank">Python track: python idioms</a></li>
+                        <li><a href="http://stephensugden.com/crash_into_python" target="_blank">Crash into python</a></li>
+                        <li><a href="https://thenewcircle.com/static/bookshelf/python_fundamentals_tutorial/" target="_blank">Python Fundamentals</a></li>
+                        <li><a href="http://docs.python-guide.org/en/latest/intro/learning/" target="_blank">Learning Python</a></li>
+                        <li><a href="http://www.rafekettler.com/magicmethods.html" target="_blank">A Guide to Python's Magic Methods</a></li>
+
+                    </ul>
+                </section>
 			</div>
 
 		</div>
