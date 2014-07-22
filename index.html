@@ -682,7 +682,7 @@ print dinosaur.apatosaurus.NUMBER_OF_HORNS
 
                     <section>
                         <h2>Partial import</h2>
-                        <p>It is inconvenient to use names as dinosaur.triceratops.NUMBER_OF_HORNS.</p>
+                        <p>Using names as dinosaur.triceratops.NUMBER_OF_HORNS is not convenient</p>
                         <p>Instead, we import certain parts in our <b>scope</b>.</p>
                         <pre><code class="python" data-trim contenteditable>
 from dinosaur.triceratops import NUMBER_OF_HORNS
@@ -740,7 +740,7 @@ if __name__ == "__main__":
                             <li>PYTHONPATH</li>
                             <li>the folder where python is installed</li>
                         </ol>
-                        <p>Take into account that path can be modified in run-time:</p>
+                        <p>Notice that path can be modified in run-time:</p>
                         <pre><code class="python" data-trim contenteditable>
 import sys
 sys.path.append('/home/brian/python/dinosaurs')
@@ -1015,19 +1015,19 @@ class TyrannosaurusRex(Dinosaur):
                             <ul>
                                 <li>There are two types of possible atoms: Oxygen and Hydrogen.</li>
                                 <li>Water = H2O</li>
-                                <li>Read from input the number of atoms of each kind</li>
-                                <li>And calculate the number of water molecules and the remaindings of the other atoms.</li>
+                                <li>Read the number of atoms of each kind from input</li>
+                                <li>And calculate the number of water molecules and the remainders of the other atoms.</li>
                             </ul>
                             <p><a href="material/challenges/challenge_2.py" target="_blank">#</a>
                     </section>
 
                     <section>
                         <h2>Challenge 3</h2>
-                            <p>We're just back from the famous Jurassic Park. Despite, there were only two kinds of dinosaurs: Tyrannosaurus Rex and Triceratops, we enjoyed a lot the dinosaurs battles...Write a program to simulate those battles and take into account:</p>
+                            <p>We're just back from the famous Jurassic Park. Nevertheless, there were only two kinds of dinosaurs: Tyrannosaurus Rex and Triceratops, we enjoyed those dinosaurs battles a lot...Write a program to simulate those battles and take into account:</p>
                             <ul>
                                 <li>As dinosaurs, both T-rex and Triceratops roar and they battle each other.</p>
-                                <li>T-rex size varies in the range 5 to 15 meters.</li>
-                                <li>Triceratops size usually is between 7 and 10 meters.</li>
+                                <li>T-rex size varies from 5 to 15 meters.</li>
+                                <li>Triceratops size ranges between 7 and 10 meters.</li>
                                 <li>If the number of T-rex is more than the double of Triceratops, they kill all the herd of Triceratops.</li>
                                 <li>In the other hand, if the sum of Triceratop sizes is bigger than Tyrannosaurus, they kill one of the Tyrannosaurus.</li>
                                 <li>Otherwise, the battle finishes OK.</li>
@@ -1078,7 +1078,7 @@ except ValueError:
 						<h2>About testing</h2>
 						<p>Testing code is very important.</p>
 						<br>
-						<p>It helps you finding bugs and to have a more decoupled architecture.</p>
+						<p>It helps you finding bugs and have a more decoupled architecture.</p>
 					</section>
 
 					<section>
@@ -1333,7 +1333,7 @@ sys 0m0.006s
 
                     <section>
                         <h2>Special methods</h2>
-                        <p>Methods to re-define default object behavior.</p>
+                        <p>Methods to redefine default object behavior.</p>
                         <pre><code class="python" data-trim contenteditable>
 __new__(cls, [...)
 
