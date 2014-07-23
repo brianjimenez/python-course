@@ -590,7 +590,7 @@ f.close()
 
 # Method 3
 with open('a_file.txt') as f:
-    for line in f.readlines():
+    for line in f:
         print line,
                         </code></pre>
                     </section>
@@ -1259,17 +1259,17 @@ $ python setup.py build_ext --inplace
 # Pure python version. t1.py
 def test(value):
     for i in xrange(value):
-    i**2
-    if(i==1000000):
-        print i
+        i**2
+        if(i==1000000):
+            print i
 
 test(10000001)
                         </code></pre>
                         <pre><code class="python" data-trim contenteditable>
 # Cython version. ct1.pyx
-def test(long long value):
-    cdef long long i
-    cdef long long z
+def test(long value):
+    cdef long i
+    cdef long z
     for i in xrange(value):
         z = i**2
         if(i==1000000):
